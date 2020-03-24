@@ -5,14 +5,41 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    swiperImgUrl: [
+      {
+        url: 'http://p1.music.126.net/oeH9rlBAj3UNkhOmfog8Hw==/109951164169407335.jpg',
+      },
+      {
+        url: 'http://p1.music.126.net/xhWAaHI-SIYP8ZMzL9NOqg==/109951164167032995.jpg',
+      },
+      {
+        url: 'http://p1.music.126.net/Yo-FjrJTQ9clkDkuUCTtUg==/109951164169441928.jpg',
+      }
+    ],
+    playList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: 'https://v1.itooi.cn/netease/songList/hot', //仅为示例，并非真实的接口地址
+      data: {
+        cat: '全部', 
+        pageSize: 20,
+        page: 0
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: (res) =>{
+        console.log(res)
+        this.setData({
+          playList: res.data.data
+        })
+      }
+    })
   },
 
   /**
