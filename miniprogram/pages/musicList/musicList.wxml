@@ -1,0 +1,28 @@
+<!--miniprogram/pages/musicList/musicList.wxml-->
+<view class='detail-container' style='background: url({{listInfo.imgUrl}}) no-repeat  top/cover'></view>
+<view class="mask"></view>
+<view class="detail-info">
+  <image class="detail-img" src="{{listInfo.imgUrl}}"></image>
+  <view class="detail">
+    <view class="detail-name">{{listInfo.name}}</view>
+  </view>
+</view>
+<view class="detail-share">
+  <view class="share-item">
+    <van-icon name="chat-o" color="white" size="40rpx"/>
+    <view class="share-font">{{listInfo.commentCount}}</view>
+  </view>
+  <view class="share-item">
+    <van-icon name="like-o" color="white" size="40rpx"/>
+    <view class="share-font">{{listInfo.subscribedCount}}</view>
+  </view>
+  <view class="share-item">
+    <van-icon name="down" color="white" size="40rpx"/>
+    <view class="share-font">下载</view>
+  </view>
+  <view class="share-item">
+    <van-icon name="cloud://xwl-2s29y.7877-xwl-2s29y-1301647289/icon/share.png" color="white" size="40rpx"/>
+    <view class="share-font">{{listInfo.shareCount}}</view>
+  </view>
+</view>
+<my-musiclist musiclist="{{musiclist}}"/>

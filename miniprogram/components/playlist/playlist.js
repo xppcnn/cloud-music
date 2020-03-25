@@ -30,17 +30,25 @@ Component({
    */
   methods: {
     // 播放数据格式化
-    _tranNumber(num,point){
+    _tranNumber(num, point) {
       let numStr = num.toString().split('.')[0]; // 小数点后忽略不计
-      if(numStr.length < 6){
+      if (numStr.length < 6) {
         return numStr
-      }else if( numStr.length >=6 && numStr.length <= 8){
-        let decimal = numStr.substring(numStr.length-4,numStr.length -4 + point)
+      } else if (numStr.length >= 6 && numStr.length <= 8) {
+        let decimal = numStr.substring(numStr.length - 4, numStr.length - 4 + point)
         return parseFloat(parseInt(num / 10000) + "." + decimal) + "万"
-      }else if(numStr.length > 8){
+      } else if (numStr.length > 8) {
         let decimal = numStr.substring(numStr.length - 8, numStr.length - 8 + point)
-        return parseFloat(parseInt(num / 10000000) + "." + decimal) + "亿"
+        return parseFloat(parseInt(num / 100000000) + "." + decimal) + "亿"
       }
+    },
+
+    //点击歌单跳转方法
+    goToMusicList() {
+      wx.navigateTo({
+        url: `../../pages/musicList/musicList?playlistId=${this.properties.playlist.id}`
+      })
     }
-  }
+  },
+
 })

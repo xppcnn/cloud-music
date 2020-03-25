@@ -19,27 +19,41 @@ Page({
     playList: [],
   },
 
+  getPlayList: function(){
+    wx.showLoading({
+      title: '数据加载中',
+    })
+    wx.cloud.callFunction({
+      name: 'music',
+      data: {
+        $url: "playList",
+        start: this.data.playList.length,
+        count: 15,
+      }
+    }).then(res => {
+      // console.log(res)
+      this.setData({
+        playList: [...this.data.playList, ...res.result.data]
+      })
+      // 手动停止当前页面下拉刷新
+      wx.stopPullDownRefresh();
+      wx.hideLoading();
+      if (res.result.data.length === 0) {
+        wx.showToast({
+          title: "暂无更多数据",
+        })
+      }
+    }).catch(err =>{
+      wx.hideLoading();
+      console.log(err)
+      })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.request({
-      url: 'https://v1.itooi.cn/netease/songList/hot', //仅为示例，并非真实的接口地址
-      data: {
-        cat: '全部', 
-        pageSize: 20,
-        page: 0
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: (res) =>{
-        console.log(res)
-        this.setData({
-          playList: res.data.data
-        })
-      }
-    })
+    this.getPlayList();
   },
 
   /**
@@ -74,14 +88,18 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    // 下拉刷新，还需要在json配置"enablePullDownRefresh": true
+    this.setData({
+      playList: []
+    })
+    this.getPlayList();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.getPlayList();
   },
 
   /**

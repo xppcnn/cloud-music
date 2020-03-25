@@ -1,0 +1,17 @@
+<!--components/musiclist/musiclist.wxml-->
+<block wx:for="{{musiclist}}" wx:key="id">
+  <view class="music-container" bind:tap="{{clickMusic}}">
+    <view class="music-index">{{index+1}}</view>
+    <view class="music-info">
+      <view class="music-name">
+      {{item.name}}
+      <text class="musiclist-alia">{{item.alia.length==0?"":item.alia[0]}}</text>
+      </view>
+      <view class="music-singer">{{item.ar[0].name}} - {{item.al.name}}</view>
+    </view>
+    <view class="music-d">
+     <view class="music-mv"><van-icon name="cloud://xwl-2s29y.7877-xwl-2s29y-1301647289/icon/video.png" /></view>
+      <view class="music-detial"><van-icon name="cloud://xwl-2s29y.7877-xwl-2s29y-1301647289/icon/detail.png" /></view>
+    </view>
+  </view>
+</block>
