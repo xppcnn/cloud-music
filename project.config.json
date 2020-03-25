@@ -57,10 +57,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "pages/musicList/musicList",
 					"pathName": "pages/musicList/musicList",
-					"query": "$url=musicLis&playlistId=3175660511",
+					"query": "$url=musicList&playlistId= 3175660511",
 					"scene": null
 				}
 			]

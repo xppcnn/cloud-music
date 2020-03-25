@@ -13,18 +13,21 @@ Component({
    * 组件的初始数据
    */
   data: {
-    play: false,
+    activeId: '', // 选中的歌曲ID
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    clickMusic(){
+    clickMusic(e){
+      const ds = e.currentTarget.dataset;
       this.setData({
-        play: !this.data.play,
+        activeId: ds.musicid
       })
-      console.log(this.data.play)
+      wx:wx.navigateTo({
+        url: `../../pages/player/player?musicId=${ds.musicid}&playIndex=${ds.index}`
+      })
     }
   }
 })

@@ -1,7 +1,10 @@
 <!--components/musiclist/musiclist.wxml-->
 <block wx:for="{{musiclist}}" wx:key="id">
-  <view class="music-container" bind:tap="{{clickMusic}}">
-    <view class="music-index">{{index+1}}</view>
+  <view class="music-container" bind:tap="clickMusic" data-musicId="{{item.id}}" data-index="{{index}}">
+    <view wx:if="{{activeId===item.id}}" class="music-index">
+      <van-icon name="cloud://xwl-2s29y.7877-xwl-2s29y-1301647289/icon/laba.png" />
+    </view>
+    <view wx:else class="music-index">{{index+1}}</view>
     <view class="music-info">
       <view class="music-name">
       {{item.name}}

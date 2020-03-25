@@ -1,0 +1,3 @@
+<!--miniprogram/pages/player/player.wxml-->
+<view class="player-container" style='background: url({{detail.al.picUrl}}) no-repeat center/cover'></view>
+<view class="player-mask"></view>
