@@ -77,7 +77,7 @@
 }
 
 .bottom-player {
-  height: 120rpx;
+  height: 80rpx;
   width: 100%;
   position: fixed;
   right: 0;
@@ -90,9 +90,9 @@
 }
 
 .mini-img {
-  height: 120rpx;
-  width: 120rpx;
-  border-radius: 60rpx;
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 40rpx;
 }
 
 .mini-detail {
@@ -108,11 +108,12 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-bottom: 10rpx;
+  padding-left: 32rpx;
 }
 
 .mini-singer{
   padding-left: 32rpx;
-  font-size: 36rpx;
+  font-size: 24rpx;
   color: #888;
 }
 

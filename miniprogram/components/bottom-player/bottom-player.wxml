@@ -1,0 +1,34 @@
+<!--components/bottom-player/bottom-player.wxml-->
+<view class="bottom-player">
+  <image class="mini-img" src="{{musicCache[playIndex].al.picUrl}}" bind:tap="goToPlayer"/>              
+  <view class="mini-detail">
+    <view class="mini-name">
+    {{musicCache[playIndex].name}}
+    </view>
+    <view class="mini-singer">{{musicCache[playIndex].ar[0].name}}</view>
+  </view>
+  <view class="mini-icon">
+    <view class="mini-play"><van-icon name="play-circle-o" size="60rpx"/></view>
+    <view class="mini-list" bind:tap="openMusicCache"><van-icon size="60rpx" name="cloud://xwl-2s29y.7877-xwl-2s29y-1301647289/icon/detail.png" /></view>
+  </view>
+</view>
+<van-popup 
+    show="{{ show }}" 
+    bind:close="onClose"
+    position="bottom"             
+    overlay="{{ true }}" 
+>
+  <view  class="popup-height"  round>
+    <block wx:for="{{_musicCache}}" wx:key="id">
+    <view class="popup-list">
+      <view wx:if="{{musicId === item.id}}" class="list-item1">
+        <van-icon name="cloud://xwl-2s29y.7877-xwl-2s29y-1301647289/icon/laba.png" />
+        <text style=" color: red; margin-left: 10rpx">{{item.name}}</text>
+      </view>
+      <view wx:else class="list-item1">{{item.name}}</view>
+      <view class="list-item2" bind:tap="goToPlayList"><van-tag>播放来源</van-tag></view>
+      <view class="music-mv list-item3" data-clickId="{{item.id}}" bind:tap="handleDel"><van-icon name="cloud://xwl-2s29y.7877-xwl-2s29y-1301647289/icon/video.png" /></view>
+    </view>
+    </block>
+  </view>
+</van-popup>

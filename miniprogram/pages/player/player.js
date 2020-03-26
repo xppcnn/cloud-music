@@ -13,7 +13,7 @@ Page({
    */
   onLoad: function(options) {
     console.log(options)
-    const musiclist = wx.getStorageSync("musiclist");
+    const musiclist = wx.getStorageSync("musicCache");
     const index = options.playIndex
     console.log(musiclist[index])
     this.setData({

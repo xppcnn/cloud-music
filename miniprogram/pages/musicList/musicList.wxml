@@ -25,41 +25,12 @@
     <view class="share-font">{{listInfo.shareCount}}</view>
   </view>
 </view>
-<!-- <view class="top-notice"wx:if="{{scrollTop>210}}">
-  <van-notice-bar
-    backgroundColor="#fff"
-    color = "#888"
-    text="{{listInfo.name}}"
->
-  <text slot="right-icon"><van-icon name="search" /></text>
-</van-notice-bar>
-</view> -->
-<scroll-view class="container" wx:if="{{scrollTop>210}}">
-  <view class="scrolltxt">
-    <view class="marquee_box">
-      <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
-        <text>足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。</text>
-        <text style="margin-right:{{marquee_margin}}px;"></text>
-        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>        
-      </view>
-    </view>
+<view wx:if="{{musicCache}}">
+  <view style="padding-bottom: 120rpx">
+    <my-musiclist musiclist="{{musiclist}}" listId="{{listInfo.listId}}" bind:twoLevelCommentBtn='twoLevelCommentBtnClick'/>
   </view>
-</scroll-view>
-<my-musiclist musiclist="{{musiclist}}"/>
-<view class="bottom-player">
-  <image class="mini-img" src="https://img.yzcdn.cn/vant/cat.jpeg"/>              
-  <view class="mini-detail">
-    <view class="mini-name">
-      <van-notice-bar
-        backgroundColor="white"
-        color = "#888"
-        text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"/>
-    </view>
-    
-    <view class="mini-singer">xxxxx</view>
-  </view>
-  <view class="mini-icon">
-    <view class="mini-play"><van-icon name="play-circle-o" size="60rpx"/></view>
-    <view class="mini-list"><van-icon size="60rpx" name="cloud://xwl-2s29y.7877-xwl-2s29y-1301647289/icon/detail.png" /></view>
-  </view>
+  <bottom-player musicCache="{{musicCache}}" playIndex="{{playIndex}}" musicId="{{musicId}}" />
+</view>
+<view wx:else>
+  <my-musiclist musiclist="{{musiclist}}"  listId="{{listInfo.listId}}" bind:twoLevelCommentBtn='twoLevelCommentBtnClick'/>
 </view>
