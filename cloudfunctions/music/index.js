@@ -22,13 +22,18 @@ exports.main = async (event, context) => {
       .get()
       .then(res => res)
   })
-
+  //歌单详情
   app.router("musicList", async(ctx, next) => {
     ctx.body = await rp(BASE_URL + '/playlist/detail?id=' + parseInt(event.playlistId))
     .then( res => {
       return res
     }).catch(err => console.log(err))
   })
-
+// 歌曲
+app.router("getMusic", async(ctx,next) => {
+  ctx.body = await rp(BASE_URL + "/song/url?id=" + parseInt(event.id))
+  .then( res => res)
+  .catch(err => console.log(err))
+})
   return app.serve();
 }

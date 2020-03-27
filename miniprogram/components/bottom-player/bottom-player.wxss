@@ -1,4 +1,5 @@
 /* components/bottom-player/bottom-player.wxss */
+
 .bottom-player {
   height: 80rpx;
   width: 100%;
@@ -9,7 +10,7 @@
   padding: 20rpx 20rpx;
   background-color: #fff;
   display: flex;
-  align-items: center
+  align-items: center;
 }
 
 .mini-img {
@@ -19,7 +20,7 @@
 }
 
 .mini-detail {
-  margin-left:  20rpx;
+  margin-left: 20rpx;
   flex: 2;
   width: 0;
 }
@@ -34,7 +35,7 @@
   padding-left: 32rpx;
 }
 
-.mini-singer{
+.mini-singer {
   padding-left: 32rpx;
   font-size: 24rpx;
   color: #888;
@@ -43,11 +44,13 @@
 .mini-icon {
   flex: 1;
   display: flex;
-  justify-content: center
+  justify-content: center;
 }
+
 .mini-play {
- margin-left: 40rpx;
-  flex: 1
+  margin-left: 40rpx;
+  flex: 1;
+  color: #000;
 }
 
 .mini-list {
@@ -63,24 +66,26 @@
   height: 60rpx;
   display: flex;
   align-items: center;
-  justify-content: space-around
+  justify-content: space-around;
 }
+
 .list-item1 {
- flex: 3;
- margin-left: 40rpx;
- /* 溢出隐藏 */
-display: -webkit-box;
--webkit-box-orient: vertical;
--webkit-line-clamp: 1;
-overflow: hidden
+  flex: 3;
+  margin-left: 40rpx;
+  /* 溢出隐藏 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }
+
 .list-item2 {
   flex: 2;
   text-align: right;
 }
 
 .list-item3 {
-  flex: 1 ;
+  flex: 1;
   margin-right: 20rpx;
   text-align: right;
 }

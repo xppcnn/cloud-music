@@ -1,3 +1,16 @@
 <!--miniprogram/pages/player/player.wxml-->
 <view class="player-container" style='background: url({{detail.al.picUrl}}) no-repeat center/cover'></view>
 <view class="player-mask"></view>
+<!-- 封面信息 -->
+<view class="plaer-info">
+  <view class="player-disc {{playStatus?'play': ''}}">
+    <image class="player-img rotation {{playStatus?'':'rotation-paused'}}" src="{{detail.al.picUrl}}"></image>
+  </view>
+</view>
+
+<!-- 控制面板 -->
+<view class="control">
+  <text class="iconfont icon-shangyishoushangyige">{{playStatus}}</text>
+  <text class="iconfont {{playStatus? 'icon-pause': 'icon-bofang'}}" bind:tap="togglePlaying"></text>
+  <text class="iconfont icon-xiayigexiayishou"></text>
+</view>

@@ -1,4 +1,5 @@
 // miniprogram/pages/player/player.js
+const backgroundAudioManager = wx.getBackgroundAudioManager();
 Page({
 
   /**
@@ -6,6 +7,7 @@ Page({
    */
   data: {
     detail: {},
+    playStatus: false,
   },
 
   /**
@@ -18,6 +20,7 @@ Page({
     console.log(musiclist[index])
     this.setData({
       detail: musiclist[index],
+      playStatus: options.playStatus
     })
     wx.setNavigationBarTitle({
       title: this.data.detail.name,
@@ -27,49 +30,67 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
+  },
+
+  togglePlaying: function() {
+    const eventChannel = this.getOpenerEventChannel()
+    if(this.data.playStatus){
+      backgroundAudioManager.pause()
+     
+      this.setData({
+        playStatus: false
+      })
+      eventChannel.emit('changePlayStatus', { value: false });
+    }else{
+      backgroundAudioManager.play()
+      this.setData({
+        playStatus: true
+      })
+      eventChannel.emit('changePlayStatus', { value: true });
+    }
   }
 })

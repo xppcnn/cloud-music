@@ -9,6 +9,7 @@ Page({
     listInfo: {},
     musicCache: [],
     musicId: -1,
+    playing: false,
   },
 
   /**
@@ -110,7 +111,8 @@ Page({
     this.setData({
       playIndex: e.detail.index,
       musicId: e.detail.musicId,
-      musicCache: musicCache
+      musicCache: musicCache,
+      playing: e.detail.playStatus
     });
     console.log("点击二级评论按钮：" + e.detail);
   },
