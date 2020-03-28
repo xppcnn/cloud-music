@@ -1,0 +1,4 @@
+<!--components/progress-bar/progress-bar.wxml-->
+<view class="" hover-class="none" hover-stop-propagation="false">
+  
+</view>

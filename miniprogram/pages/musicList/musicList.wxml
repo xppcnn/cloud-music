@@ -29,7 +29,7 @@
   <view style="padding-bottom: 120rpx">
     <my-musiclist musiclist="{{musiclist}}" listId="{{listInfo.listId}}" bind:twoLevelCommentBtn='twoLevelCommentBtnClick'/>
   </view>
-  <bottom-player musicCache="{{musicCache}}" playIndex="{{playIndex}}" musicId="{{musicId}}" playStatus="playing"/>
+  <bottom-player musicCache="{{musicCache}}" playIndex="{{playIndex}}" musicId="{{musicId}}" playStatus="{{playing}}"/>
 </view>
 <view wx:else>
   <my-musiclist musiclist="{{musiclist}}"  listId="{{listInfo.listId}}" bind:twoLevelCommentBtn='twoLevelCommentBtnClick'/>

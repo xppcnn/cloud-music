@@ -108,3 +108,11 @@
     transform: rotate(360deg);
   }
 }
+
+.play-progress {
+  position: absolute;
+  left: 50%;
+  bottom: 24%;
+  width: 90%;
+  transform: translateX(-50%);
+}

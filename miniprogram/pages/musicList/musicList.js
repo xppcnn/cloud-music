@@ -107,7 +107,7 @@ Page({
 
   twoLevelCommentBtnClick(e) {
     const musicCache = wx.getStorageSync("musicCache");
-    console.log(e)
+    console.log(typeof (e.detail.playStatus),"555555")
     this.setData({
       playIndex: e.detail.index,
       musicId: e.detail.musicId,
