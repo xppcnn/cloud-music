@@ -62,6 +62,25 @@ Page({
       backgroundAudioManager.singer = music.ar[0].name
       backgroundAudioManager.epname = music.al.name
       wx.hideLoading();
+
+      // 加载歌词
+      wx.cloud.callFunction({
+        name: "music",
+        data: {
+          $url: 'lyric',
+          id: musicId,
+        }
+      }).then(res => {
+        console.log(res)
+        let lyric = "暂无歌词";
+        const lrc = JSON.parse(res.result).lrc;
+        if(lrc){
+          lyric = lrc.lyric;
+        }
+        this.setData({
+         lyric 
+        })
+      })
     })
 
   },
@@ -93,14 +112,16 @@ Page({
     this._loadMusicDetail(musiclist[nowPlayingIndex].id)
   },
 
+  //显示歌词
   onChangeLyricShow() {
     this.setData({
       isLyricShow: !this.data.isLyricShow
     })
   },
 
+  // 
   timeUpdate(event) {
-    this.selectComponent('.lyric').update(event.detail.currentTime)
+    this.selectComponent('.lyric').updateLyric(event.detail.currentTime)
   },
 
   onPlay() {

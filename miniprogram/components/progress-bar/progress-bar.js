@@ -2,6 +2,9 @@
 let movableAreaWidth = 0;
 let movableViewWidth = 0;
 const backgroundAudioManager = wx.getBackgroundAudioManager();
+let currentSec = -1; // 当前的秒数
+let duration = 0 ; // f当前歌曲的总时长
+let isMoveing = false; // 表示当前进度条是否被拖动
 Component({
   /**
    * 组件的属性列表
@@ -32,11 +35,30 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    
+    onChange(e) {
+      // console.log(e)
+      if(e.detail.source === 'touch'){
+        // 拖动进度条时，只是更新值，只要在停止拖动时，再进行setData
+        this.data.progress = e.detail.x / (movableAreaWidth - movableViewWidth) * 100;
+        this.data.movableDis = e.detail.x;
+        isMoveing = true;
+      }
+    },
+    // todo: 执行完touchEnd  后，可能会再执行一次onChange事件
+    touchEnd(e) {
+      const currentTimeFmt = this._dateFormat(Math.floor(backgroundAudioManager.currentTime))
+      this.setData({
+        progress: this.data.progress,
+        movableDis: this.data.movableDis,
+        ['showTime.currentTime'] : currentTimeFmt.min + ':' + currentTimeFmt.sec,
+      })
+      backgroundAudioManager.seek(duration * this.data.progress /100);
+      isMoveing = false;
+    },
     _bindBGMEvent() {
       backgroundAudioManager.onPlay(() => {
-        console.log('onPlay')
-        // isMoving = false
+        console.log('onPlay') 
+        isMoveing = false;
         // this.triggerEvent('musicPlay')
       })
 
@@ -66,32 +88,30 @@ Component({
         }
       })
 
+      // 监听背景音频播放进度更新事件
       backgroundAudioManager.onTimeUpdate(() => {
-        // console.log('onTimeUpdate')
-        // if (!isMoving) {
-        //   const currentTime = backgroundAudioManager.currentTime
-        //   const duration = backgroundAudioManager.duration
-        //   const sec = currentTime.toString().split('.')[0]
-        //   if (sec != currentSec) {
-        //     // console.log(currentTime)
-        //     const currentTimeFmt = this._dateFormat(currentTime)
-        //     this.setData({
-        //       movableDis: (movableAreaWidth - movableViewWidth) * currentTime / duration,
-        //       progress: currentTime / duration * 100,
-        //       ['showTime.currentTime']: `${currentTimeFmt.min}:${currentTimeFmt.sec}`,
-        //     })
-        //     currentSec = sec
-        //     // 联动歌词
-        //     this.triggerEvent('timeUpdate', {
-        //       currentTime
-        //     })
-        //   }
-        // }
+        // 只要在进度条没被拖动时，在进行执行
+        if(!isMoveing){
+          const currentTime = backgroundAudioManager.currentTime;
+          const duration = backgroundAudioManager.duration;
+          const sec = currentTime.toString().split('.')[0];
+          if(sec !== currentSec){
+            const currentTimeFmt = this._dateFormat(currentTime);
+            this.setData({
+              movableDis: (movableAreaWidth -movableViewWidth) * currentTime / duration,
+              progress: currentTime / duration * 100,
+              ['showTime.currentTime'] : `${currentTimeFmt.min}:${currentTimeFmt.sec}`,
+            })
+            currentSec = sec;
+            // 歌词联动
+            this.triggerEvent("timeUpdate", { currentTime })
+          }
+        }
       })
 
       backgroundAudioManager.onEnded(() => {
         console.log("onEnded")
-        // this.triggerEvent('musicEnd')
+        this.triggerEvent('musicEnd')
       })
 
       backgroundAudioManager.onError((res) => {
@@ -117,7 +137,7 @@ Component({
     },
 
     _setTime(time) {
-      const duration = backgroundAudioManager.duration
+      duration = backgroundAudioManager.duration
       const durationFmt = this._dateFormat(duration);
       this.setData({
         ['showTime.totalTime'] : `${durationFmt.min}:${durationFmt.sec}`
