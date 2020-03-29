@@ -1,20 +1,21 @@
-<!--miniprogram/pages/player/player.wxml-->
-<view class="player-container" style='background: url({{detail.al.picUrl}}) no-repeat center/cover'></view>
+<view class="player-container" style="background:url({{picUrl}}) center/cover no-repeat"></view>
 <view class="player-mask"></view>
-<!-- 封面信息 -->
-<view class="plaer-info">
-  <view class="player-disc {{playStatus?'play': ''}}">
-    <image class="player-img rotation {{playStatus? '' :'rotation-paused'}}" src="{{detail.al.picUrl}}"></image>
+
+<view class="player-info">
+  <!-- 封面信息 -->
+  <view class="player-disc {{isPlaying?'play': ''}}" bind:tap="onChangeLyricShow" hidden="{{isLyricShow}}">
+    <image class="player-img rotation {{isPlaying?'':'rotation-paused'}}" src="{{picUrl}}"></image>
   </view>
 
   <!-- 进度条 -->
-  <view class="play-progress">
-      <my-progress />
+  <view class="progress-bar">
+    <my-progress-bar bind:musicEnd="onNext" bind:timeUpdate="timeUpdate" bind:musicPlay="onPlay" bind:musicPause="onPause" isSame="{{isSame}}" />
   </view>
+
   <!-- 控制面板 -->
   <view class="control">
-    <text class="iconfont icon-shangyishoushangyige" bind:tap="onPrev">{{playStatus}}</text>
-    <text class="iconfont {{playStatus? 'icon-pause': 'icon-bofang'}}" bind:tap="togglePlaying"></text>
+    <text class="iconfont icon-shangyishoushangyige" bind:tap="onPrev"></text>
+    <text class="iconfont {{isPlaying?'icon-pause':'icon-bofang'}}" bind:tap="togglePlaying"></text>
     <text class="iconfont icon-xiayigexiayishou" bind:tap="onNext"></text>
   </view>
 

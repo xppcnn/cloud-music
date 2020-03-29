@@ -1,20 +1,12 @@
-<!--components/musiclist/musiclist.wxml-->
 <block wx:for="{{musiclist}}" wx:key="id">
-  <view class="music-container" bind:tap="clickMusic" data-musicId="{{item.id}}" data-index="{{index}}">
-    <view wx:if="{{activeId===item.id}}" class="music-index">
-      <van-icon name="cloud://xwl-2s29y.7877-xwl-2s29y-1301647289/icon/laba.png" />
-    </view>
-    <view wx:else class="music-index">{{index+1}}</view>
-    <view class="music-info">
-      <view class="music-name">
-      {{item.name}}
-      <text class="musiclist-alia">{{item.alia.length==0?"":item.alia[0]}}</text>
+  <view class="musiclist-container {{item.id === playingId ? 'playing': ''}}" bind:tap="onSelect" data-musicid="{{item.id}}" data-index="{{index}}">
+    <view class="musiclist-index">{{index+1}}</view>
+    <view class="musiclist-info">
+      <view class="musiclist-name">
+        {{item.name}}
+        <text class="musiclist-alia">{{item.alia.length==0?"":item.alia[0]}}</text>
       </view>
-      <view class="music-singer">{{item.ar[0].name}} - {{item.al.name}}</view>
-    </view>
-    <view class="music-d">
-     <view class="music-mv"><van-icon name="cloud://xwl-2s29y.7877-xwl-2s29y-1301647289/icon/video.png" /></view>
-      <view class="music-detial"><van-icon name="cloud://xwl-2s29y.7877-xwl-2s29y-1301647289/icon/detail.png" /></view>
+      <view class="musiclist-singer">{{item.ar[0].name}} - {{item.al.name}}</view>
     </view>
   </view>
 </block>

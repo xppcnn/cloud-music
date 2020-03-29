@@ -1,31 +1,14 @@
-<!--miniprogram/pages/musicList/musicList.wxml-->
-<view class='detail-container' style='background: url({{listInfo.imgUrl}}) no-repeat  top/cover'></view>
-<view class="mask"></view>
-<view class="detail-info">
-  <image class="detail-img" src="{{listInfo.imgUrl}}"></image>
-  <view class="detail">
-    <view class="detail-name">{{listInfo.name}}</view>
+<view class='detail-container' style='background: url({{listInfo.coverImgUrl}}) no-repeat  top/cover'></view>
+<view class='detail-mask'></view>
+<view class='detail-info'>
+  <image src="{{listInfo.coverImgUrl}}" class='detail-img'></image>
+  <view class='detail'>
+    <view class='detail-nm'>{{listInfo.name}}</view>
   </view>
 </view>
-<view class="detail-share">
-  <view class="share-item">
-    <van-icon name="chat-o" color="white" size="40rpx"/>
-    <view class="share-font">{{listInfo.commentCount}}</view>
-  </view>
-  <view class="share-item">
-    <van-icon name="like-o" color="white" size="40rpx"/>
-    <view class="share-font">{{listInfo.subscribedCount}}</view>
-  </view>
-  <view class="share-item">
-    <van-icon name="down" color="white" size="40rpx"/>
-    <view class="share-font">下载</view>
-  </view>
-  <view class="share-item">
-    <van-icon name="cloud://xwl-2s29y.7877-xwl-2s29y-1301647289/icon/share.png" color="white" size="40rpx"/>
-    <view class="share-font">{{listInfo.shareCount}}</view>
-  </view>
-</view>
-<view wx:if="{{musicCache}}">
+
+<my-musiclist musiclist="{{musiclist}}" />
+<!-- <view wx:if="{{musicCache}}">
   <view style="padding-bottom: 120rpx">
     <my-musiclist musiclist="{{musiclist}}" listId="{{listInfo.listId}}" bind:twoLevelCommentBtn='twoLevelCommentBtnClick'/>
   </view>
@@ -33,4 +16,4 @@
 </view>
 <view wx:else>
   <my-musiclist musiclist="{{musiclist}}"  listId="{{listInfo.listId}}" bind:twoLevelCommentBtn='twoLevelCommentBtnClick'/>
-</view>
+</view> -->

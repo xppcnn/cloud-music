@@ -1,22 +1,21 @@
-/* components/musiclist/musiclist.wxss */
-.music-container {
+.musiclist-container {
   display: flex;
   padding: 14rpx 20rpx;
-  align-items: center;
+  align-items: center; /* 垂直居中 */
 }
 
-.music-index {
+.musiclist-index {
   color: #888;
   font-size: 34rpx;
   width: 80rpx;
 }
 
-.music-info {
-  flex: 1;
+.musiclist-info {
+  flex-grow: 1;
   width: 0;
 }
 
-.music-name {
+.musiclist-name {
   font-size: 34rpx;
   color: #333;
   overflow: hidden;
@@ -25,22 +24,15 @@
   margin-bottom: 10rpx;
 }
 
-.music-singer{
+.musiclist-alia {
+  color: #888;
+}
+
+.musiclist-singer {
   font-size: 24rpx;
   color: #888;
 }
 
-.music-d {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end
+.playing view, .playing text {
+  color: #d43c33;
 }
-.music-mv {
-  margin-right: 20rpx;
-
-}
-
-.music-details {
-  flex: 1;
-}
-
