@@ -15,12 +15,12 @@ Component({
     playingId: -1
   },
   pageLifetimes: {
-    // show() {
-    //   this.setData({
-    //     playingId: parseInt(app.getPlayMusicId())
-    //   })
-
-    // }
+    // 组件所在的页面被展示时执行
+    show(){
+      this.setData({
+        playingId: parseInt(app.getPlayMusicId()),
+      })
+    }
   },
 
   /**

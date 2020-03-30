@@ -16,7 +16,17 @@ Component({
   
   observers: {
     lyric(lrc) {
-     this._parseLyric(lrc)
+      if(lrc === "暂无歌词"){
+        this.setData({
+          lyricList: [{
+            lrc,
+            time: 0,
+          }],
+          nowLyricIndex: -1
+        })
+      }else{
+        this._parseLyric(lrc)
+      }
     }
   },
   /**

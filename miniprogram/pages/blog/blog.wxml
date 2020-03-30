@@ -1,2 +1,12 @@
-<!--miniprogram/pages/blog/blog.wxml-->
-<text>miniprogram/pages/blog/blog.wxml</text>
+<!-- miniprogram/pages/blog/blog.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="publish-container" bind:tap="onPublish">
+      <i class="iconfont icon-fabu"></i>
+    </view>
+    <view class="search-container">
+      <my-search iconfont="iconfont" icon-suosou="icon-suosou" />
+    </view>
+  </view>
+  <my-bottom-modal modalShow="{{modalShow}}"/>
+</view>

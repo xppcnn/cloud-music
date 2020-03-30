@@ -10,7 +10,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    isSame: Boolean,
   },
 
   /**
@@ -27,6 +27,9 @@ Component({
 
   lifetimes: {
     ready(){
+      if(this.properties.isSame && this.data.showTime.totalTime==="00:00"){
+        this._setTime();
+      }
       this._getMovableDis();
       this._bindBGMEvent();
     }
@@ -59,7 +62,7 @@ Component({
       backgroundAudioManager.onPlay(() => {
         console.log('onPlay') 
         isMoveing = false;
-        // this.triggerEvent('musicPlay')
+        this.triggerEvent('musicPlay')
       })
 
       backgroundAudioManager.onStop(() => {
@@ -68,7 +71,7 @@ Component({
 
       backgroundAudioManager.onPause(() => {
         console.log('Pause')
-        // this.triggerEvent('musicPause')
+        this.triggerEvent('musicPause')
       })
 
       backgroundAudioManager.onWaiting(() => {
@@ -136,7 +139,7 @@ Component({
       })
     },
 
-    _setTime(time) {
+    _setTime() {
       duration = backgroundAudioManager.duration
       const durationFmt = this._dateFormat(duration);
       this.setData({

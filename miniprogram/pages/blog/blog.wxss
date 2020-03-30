@@ -1,1 +1,29 @@
 /* miniprogram/pages/blog/blog.wxss */
+.header {
+  display: flex;
+  height: 100rpx;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+  padding: 0 20rpx;
+  align-items: center;
+  z-index: 50;
+  box-sizing: border-box;
+}
+
+.publish-container {
+  width: 68rpx;
+  height: 68rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header .icon-fabu {
+  font-size: 48rpx;
+}
+
+.search-container {
+  flex: 1;
+}

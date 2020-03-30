@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/playlist/playlist",
     "pages/blog/blog",
+    "pages/playlist/playlist",
+    
     "pages/profile/profile",
     "pages/musicList/musicList",
     "pages/player/player"

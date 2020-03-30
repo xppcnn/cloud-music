@@ -22,13 +22,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    // console.log(options)
     nowPlayingIndex = options.index
     musiclist = wx.getStorageSync('musiclist')
     this._loadMusicDetail(options.musicId)
   },
 
   _loadMusicDetail(musicId) {
+    if (musicId === app.getPlayMusicId()) {
+      this.setData({
+        isSame: true
+      })
+    } else {
+      this.setData({
+        isSame: false
+      })
+    }
+    if (!this.data.isSame) {
+      backgroundAudioManager.stop()
+    }
     let music = musiclist[nowPlayingIndex]
     console.log(music)
     wx.setNavigationBarTitle({
@@ -40,6 +52,8 @@ Page({
       isPlaying: false,
     })
 
+    app.setPlayMusicId(musicId)
+    
     wx.showLoading({
       title: '歌曲加载中',
     })
@@ -50,17 +64,26 @@ Page({
         $url: 'getMusic',
       }
     }).then((res) => {
-      console.log(res)
       console.log(JSON.parse(res.result))
       let result = JSON.parse(res.result)
+      if(result.data[0].url === null) {
+        wx.showToast({
+          title: '暂无权限播放',
+        });
+        return
+      }
+      if (!this.data.isSame) {
+        backgroundAudioManager.src = result.data[0].url
+        backgroundAudioManager.title = music.name
+        backgroundAudioManager.coverImgUrl = music.al.picUrl
+        backgroundAudioManager.singer = music.ar[0].name
+        backgroundAudioManager.epname = music.al.name
+      }
       this.setData({
         isPlaying: true
       })
-      backgroundAudioManager.src = result.data[0].url
-      backgroundAudioManager.title = music.name
-      backgroundAudioManager.coverImgUrl = music.al.picUrl
-      backgroundAudioManager.singer = music.ar[0].name
-      backgroundAudioManager.epname = music.al.name
+      // 记录当前播放的id
+     
       wx.hideLoading();
 
       // 加载歌词
@@ -74,11 +97,11 @@ Page({
         console.log(res)
         let lyric = "暂无歌词";
         const lrc = JSON.parse(res.result).lrc;
-        if(lrc){
+        if (lrc) {
           lyric = lrc.lyric;
         }
         this.setData({
-         lyric 
+          lyric
         })
       })
     })
