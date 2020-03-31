@@ -62,6 +62,13 @@
 					"pathName": "pages/musicList/musicList",
 					"query": "$url=musicList&playlistId= 3175660511",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "blog-edit",
+					"pathName": "pages/blog-edit/blog-edit",
+					"query": "avatarUrl= \"https://wx.qlogo.cn/mmopen/vi_32/f8J8OwFQeUKQS1t6UibkHvjWbflEkez4q9GicZyDOXTMyCibl85xftlObibj7R1NtJO7MsLBkt2D9W28dsVefAlrcQ/132\" &nickName= \"彳余小白\"",
+					"scene": null
 				}
 			]
 		}

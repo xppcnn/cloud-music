@@ -8,5 +8,10 @@
       <my-search iconfont="iconfont" icon-suosou="icon-suosou" />
     </view>
   </view>
-  <my-bottom-modal modalShow="{{modalShow}}"/>
+  <!-- 博客列表 -->
+  <block  wx:for="{{blogList}}" wx:key="_id">
+    <my-blog-list />
+  </block>
+  <!-- 底部弹出层 -->
+  <my-login modalShow="{{modalShow}}" bind:loginSuccess="loginSuccess" bind:loginFail="loginFail"/>
 </view>
