@@ -1,4 +1,6 @@
 // miniprogram/pages/blog/blog.js
+// 搜索的关键字
+let keyword = ''
 Page({
 
   /**
@@ -53,21 +55,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  this._loadBlogList()
+  this._loadBlogList(0)
   },
 
-  _loadBlogList(){
+  _loadBlogList(start){
     wx.cloud.callFunction({
       name: 'blog',
       data: {
+        start,
+        keyword,
         $url: 'blogList',
         count: 10,
-        start: 0
       }
     }).then(res => {
       this.setData({
         blogList: [...this.data.blogList,...res.result]
       })
     })
-  }
+  },
+
+  onPullDownRefresh: function() {
+    this.setData({
+      blogList: []
+    })
+    this._loadBlogList(0)
+  },
+
+  onReachBottom: function() {
+    // 页面触底时执行
+    this._loadBlogList(this.data.blogList.length)
+  },
+
+  handleSearch(e) {
+    this.setData({
+      blogList: [],
+    })
+    keyword = e.detail
+    this._loadBlogList(0)
+  },
 })

@@ -1,4 +1,4 @@
-// components/blog-list/blog-list.js
+// components/blog-ctrl/blog-ctrl.js
 Component({
   /**
    * 组件的属性列表
@@ -7,6 +7,9 @@ Component({
 
   },
 
+  options: {
+    styleIsolation: 'apply-shared',
+  },
   /**
    * 组件的初始数据
    */

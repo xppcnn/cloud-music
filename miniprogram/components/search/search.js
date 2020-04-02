@@ -1,4 +1,5 @@
 // components/search/search.js
+let keyword ='';
 Component({
   /**
    * 组件的属性列表
@@ -27,6 +28,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    handleInput(e){
+      keyword = e.detail.value
+    },
 
+    handleSearch() {
+      this.triggerEvent('search',keyword)
+    }
   }
 })

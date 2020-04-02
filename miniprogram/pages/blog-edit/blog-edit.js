@@ -123,8 +123,12 @@ Page({
         wx.showToast({
           title: '发布成功',
         });
-
+        // 发布成功后跳转回blog页面并刷新页面
         wx.navigateBack()
+        const pages =  getCurrentPages();
+        const prevPage = pages[pages.length -2]
+        prevPage.onPullDownRefresh()
+        
       }).catch(err => {
         wx.hideLoading()
         wx.showToast({

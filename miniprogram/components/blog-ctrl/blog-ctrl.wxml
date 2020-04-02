@@ -1,0 +1,13 @@
+<!--components/blog-ctrl/blog-ctrl.wxml-->
+<view class="container">
+  <view class="ctrl-item">
+    <i class="iconfont icon-pinglun icon"></i>
+    <text>评论</text>
+  </view>
+  <view class="ctrl-item share">
+    <button open-type="share" class="share-btn">
+      <i class="iconfont icon-fenxiang icon"></i>
+    <text>分享</text>
+    </button>
+  </view>
+</view>

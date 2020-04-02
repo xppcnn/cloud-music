@@ -1,0 +1,16 @@
+<!--components/blog-list/blog-list.wxml-->
+<view class="container">
+  <view class="blog-title">
+    <image class="blog-portrait" src="{{blog.avatarUrl}}"/>
+    <view class="blog-info">
+      <view class="blog-nickName">{{blog.nickName}}</view>
+    <view class="blog-time">{{_createDate}}</view>
+    </view>
+  </view>
+  <view class="blog-content">{{blog.content}}</view>
+  <view class="blog-image">
+    <block wx:for="{{blog.img}}" wx:key="*this">
+      <image src="{{item}}" class="image" mode='aspectFill' bind:tap="previewImage" data-imgs="{{blog.img}}" data-imgsrc="{{item}}"/>
+    </block>
+  </view>
+</view>
