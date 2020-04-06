@@ -1,13 +1,20 @@
-<!--components/blog-ctrl/blog-ctrl.wxml-->
+<!-- components/blog-ctrl/blog-ctrl.wxml -->
 <view class="container">
-  <view class="ctrl-item">
+  <view class="ctrl-item" bind:tap="handleComment">
     <i class="iconfont icon-pinglun icon"></i>
     <text>评论</text>
   </view>
   <view class="ctrl-item share">
     <button open-type="share" class="share-btn">
       <i class="iconfont icon-fenxiang icon"></i>
-    <text>分享</text>
+      <text>分享</text>
     </button>
   </view>
 </view>
+<my-login modalShow="{{loginShow}}" bind:loginSuccess="loginSuccess" bind:loginFail="loginFail" />
+<my-bottom-modal modalShow="{{modalShow}}">
+  <form slot="modal-content" report-submit="{{true}}" bind:submit="handleSend">
+    <textarea name="content" class="comment-content" placeholder="写下您的想法..." value="{{content}}" fixed="{{true}}"></textarea>
+    <button class="btn" form-type="submit">评论</button>
+  </form>
+</my-bottom-modal>

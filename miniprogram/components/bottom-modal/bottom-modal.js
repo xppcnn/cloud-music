@@ -23,6 +23,7 @@ Component({
    */
   methods: {
     closeModal(){
+      console.log("111")
       this.setData({
         modalShow: false
       })

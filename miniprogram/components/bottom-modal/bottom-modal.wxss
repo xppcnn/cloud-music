@@ -14,7 +14,7 @@
   position: absolute;
   bottom: 0rpx;
   left: 0;
-  height: 300rpx;
+  min-height: 300rpx;
   width: 100%;
   box-sizing: border-box;
   background-color: #f8f8f8;

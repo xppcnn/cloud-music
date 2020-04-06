@@ -1,4 +1,7 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "my-login": "../login/login",
+    "my-bottom-modal": "../bottom-modal/bottom-modal"
+  }
 }

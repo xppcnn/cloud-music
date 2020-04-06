@@ -13,7 +13,7 @@
     <block wx:for="{{blogList}}" wx:key="_id">
       <view class="blog-panel">
         <my-blog-card blog="{{item}}" />
-        <my-blog-ctrl />
+        <my-blog-ctrl blogId="{{item._id}}"/>
       </view>
     </block>
   </view>
