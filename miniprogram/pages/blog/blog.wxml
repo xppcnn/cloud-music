@@ -11,8 +11,8 @@
   <!-- 博客列表 -->
   <view class="blog-list">
     <block wx:for="{{blogList}}" wx:key="_id">
-      <view class="blog-panel">
-        <my-blog-card blog="{{item}}" />
+      <view class="blog-panel" >
+        <my-blog-card blog="{{item}}" bind:tap="goToComment" data-blogid="{{item._id}}"/>
         <my-blog-ctrl blogId="{{item._id}}"/>
       </view>
     </block>

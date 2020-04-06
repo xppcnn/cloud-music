@@ -51,6 +51,13 @@ Page({
       content: '',
     });
   },
+
+  goToComment(e){
+    console.log(e)
+    wx.navigateTo({
+      url: `../../pages/blog-comment/blog-comment?blogId=${e.currentTarget.dataset.blogid}`
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

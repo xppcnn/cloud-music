@@ -1,2 +1,27 @@
-<!--miniprogram/pages/blog-comment/blog-comment.wxml-->
-<text>miniprogram/pages/blog-comment/blog-comment.wxml</text>
+<!-- miniprogram/pages/blog-comment/blog-comment.wxml -->
+<scroll-view scroll-y="true" class="container">
+  <view class="blog-card">
+    <my-blog-card blog="{{detail}}"/>
+  </view>
+
+  <view class="tab">
+    <view class="tab-item">评论列表</view>
+  </view>
+
+    <view class="comment-list">
+    <!-- 评论 -->
+    <block wx:for="{{commentList}}" wx:key="_id">
+      <view class="comment">
+        <view class="comment-title">
+          <image class="comment-portrait" src="{{item.avatarUrl}}"></image>
+          <text class="comment-nickname">{{item.nickName}}</text>
+        </view>
+        <view class="comment-content">
+          {{item.content}}
+        </view>
+        <view class="comment-time">{{item.createDate}}</view>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+
