@@ -25,3 +25,6 @@
   </view>
 </scroll-view>
 
+<view class="blog-ctrl">
+  <my-blog-ctrl blogId="{{blogId}}" bind:refreshCommentList="_getBlogDetail"/>
+</view>

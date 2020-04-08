@@ -1,5 +1,3 @@
-// components/blog-list/blog-list.js
-// components/blog-card/blog-card.js
 import formatTime from '../../utils/formatTime.js'
 Component({
   /**
@@ -11,7 +9,7 @@ Component({
 
   observers: {
     ['blog.createDate'](time) {
-      if(time) {
+      if (time) {
         this.setData({
           _createDate: formatTime(new Date(time))
         })
@@ -22,7 +20,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    _createDate:'',
+    _createDate: '',
   },
 
   /**

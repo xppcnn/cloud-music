@@ -11,20 +11,17 @@ exports.main = async (event, context) => {
     touser: OPENID,
     page: `../../miniprogram/pages/blog-comment/blog-comment?blogId=${event.blogId}`,
     data: {
-      name2: {
+      thing2: {
         value: event.nickName
       },
-      thing3: {
+      thing1: {
         value: event.content
       },
-      time4: {
+      time3: {
         value: '20:00'
       },
-      thing5: {
-        value: '广州市海珠区新港中路397号'
-      }
     },
-    templateId: '5jHgKspVo0tQHqY6vZsEhIe8b6upLvTOh51BQM3lA7w'
+    templateId: 'AdQx1ohti1Q8BUsvZhI9cfnS80QFfgeyr_kPBj-MtoQ'
   })
   return res
 }

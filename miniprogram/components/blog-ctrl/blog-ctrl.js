@@ -96,7 +96,7 @@ Component({
         // 调用微信 API 申请发送订阅消息
         wx.requestSubscribeMessage({
           // 传入订阅消息的模板id，模板 id 可在小程序管理后台申请
-          tmplIds: ['5jHgKspVo0tQHqY6vZsEhIe8b6upLvTOh51BQM3lA7w'],
+          tmplIds: ['AdQx1ohti1Q8BUsvZhI9cfnS80QFfgeyr_kPBj-MtoQ'],
           success:(res)=> {
             // 申请订阅成功
             if (res.errMsg === 'requestSubscribeMessage:ok') {
@@ -135,6 +135,8 @@ Component({
           modalShow: false,
           content: '',
         })
+
+        this.triggerEvent('refreshCommentList')
       })
     }
   }

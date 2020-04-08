@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "my-blog-card": "../../components/blog-card/blog-card"
+    "my-blog-card": "../../components/blog-card/blog-card",
+    "my-blog-ctrl": "../../components/blog-ctrl/blog-ctrl"
   },
   "navigationBarTitleText": "详情"
 }
