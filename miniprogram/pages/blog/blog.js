@@ -100,4 +100,14 @@ Page({
     keyword = e.detail
     this._loadBlogList(0)
   },
+
+  onShareAppMessage: function(event) {
+    console.log(event)
+    let blogObj = event.target.dataset.blog
+    return {
+      title: blogObj.content,
+      path: `/pages/blog-comment/blog-comment?blogId=${blogObj._id}`,
+      // imageUrl: ''
+    }
+  }
 })

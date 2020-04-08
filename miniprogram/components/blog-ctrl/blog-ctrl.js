@@ -7,6 +7,7 @@ Component({
    */
   properties: {
     blogId: String,
+    blog: Object,
   },
 
   options: {

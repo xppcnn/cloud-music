@@ -5,7 +5,7 @@
     <text>评论</text>
   </view>
   <view class="ctrl-item share">
-    <button open-type="share" class="share-btn">
+    <button open-type="share" class="share-btn" data-blogid="{{blogId}}" data-blog="{{blog}}">
       <i class="iconfont icon-fenxiang icon"></i>
       <text>分享</text>
     </button>
