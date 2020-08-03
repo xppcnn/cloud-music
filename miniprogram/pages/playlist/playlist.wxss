@@ -7,19 +7,29 @@
 .menu {
   height: 140rpx;
   display: flex;
-  margin-bottom: 20rpx;
+  margin:10rpx 0 20rpx 0;
   justify-content: space-around;
+  align-items: center;
 }
 
 .menu-item {
-
+ text-align: center;
 }
 
 .icon-bg {
   height: 100rpx;
   width: 100rpx;
   border-radius: 50%;
-  background-color: salmon;
+  background-color: #d43c43;
+  position: relative;
+}
+
+.icon-site {
+  font-size: large;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 
 .text {

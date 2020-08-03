@@ -1,6 +1,11 @@
 <block wx:for="{{musiclist}}" wx:key="id">
-  <view class="musiclist-container {{item.id === playingId ? 'playing': ''}}" bind:tap="onSelect" data-musicid="{{item.id}}" data-index="{{index}}">
-    <view class="musiclist-index">{{index+1}}</view>
+  <view class="musiclist-container" bind:tap="onSelect" data-musicid="{{item.id}}" data-index="{{index}}">
+    <block wx:if="{{item.id === playingId}}">
+      <i class="iconfont icon-laba musiclist-index playing"></i>
+    </block>
+    <block wx:else>
+       <view class="musiclist-index">{{index+1}}</view>
+    </block>
     <view class="musiclist-info">
       <view class="musiclist-name">
         {{item.name}}
@@ -8,5 +13,6 @@
       </view>
       <view class="musiclist-singer">{{item.ar[0].name}} - {{item.al.name}}</view>
     </view>
+    <i class="iconfont icon-zhankai"></i>
   </view>
 </block>

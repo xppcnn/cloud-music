@@ -49,6 +49,13 @@ Page({
       })
   },
 
+  goTo(e) {
+    console.log('e',e);
+    const { site } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: `../../pages/${site}/${site}`
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

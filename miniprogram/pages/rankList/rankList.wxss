@@ -1,0 +1,13 @@
+/* miniprogram/pages/recommend/recommend.wxss */
+.title {
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.rank-recommend {
+  margin-top: 20rpx;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-around;
+  flex-direction: row
+}

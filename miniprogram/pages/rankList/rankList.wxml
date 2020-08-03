@@ -1,0 +1,16 @@
+<!--miniprogram/pages/recommend/recommend.wxml-->
+<text class="title">硬地原创音乐榜</text>
+<my-rankCard  rankdetail="{{artistRank}}"></my-rankCard>
+<text class="title">官方</text>
+<block wx:for="{{officialRank}}" wx:key="index">
+  <my-rankCard  rankdetail="{{item}}"></my-rankCard>
+</block>
+
+<text class="title">推荐榜</text>
+<view class="rank-recommend">
+  <block wx:for="{{recommendRank}}" wx:key="index">
+    <my-rankCard  rankdetail="{{item}}" showFlag="{{true}}"></my-rankCard>
+  </block>
+</view>
+<text class="title">全球榜</text>
+<my-rankCard  rankdetail="{{rewardRank}}"></my-rankCard>

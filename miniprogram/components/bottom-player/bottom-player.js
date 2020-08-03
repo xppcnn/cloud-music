@@ -76,7 +76,7 @@ Component({
       })
     },
     goToPlayer() {
-      wx: wx.navigateTo({
+      wx.navigateTo({
         url: `../../pages/player/player?playIndex=${this.properties.playIndex}&playStatus=${this.data._playStatus}`,
         events: {
           // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据

@@ -8,35 +8,35 @@
   </block>
 </swiper>
 <view class="menu">
-  <view class="menu-item">
+  <view class="menu-item" bind:tap="goTo" data-site="recommend">
     <view class="icon-bg">
-      <i class="iconfont icon-weibiaoti--"></i>
+      <i class="iconfont icon-rili icon-site"></i>
     </view>
     <text class="text">每日推荐</text>
   </view>
   <view class="menu-item">
-    <view>
-      <i class="iconfont icon-weibiaoti--"></i>
+   <view class="icon-bg">
+      <i class="iconfont icon-gedan icon-site"></i>
     </view>
-    <text >每日推荐</text>
+    <text class="text">歌单</text>
+  </view>
+  <view class="menu-item" bind:tap="goTo" data-site="rankList">
+    <view class="icon-bg">
+      <i class="iconfont icon-paixingbang icon-site"></i>
+    </view>
+    <text class="text">排行榜</text>
   </view>
   <view class="menu-item">
-    <view>
-      <i class="iconfont icon-weibiaoti--"></i>
+   <view class="icon-bg">
+      <i class="iconfont icon-tubiaozhizuomoban icon-site"></i>
     </view>
-    <text >每日推荐</text>
+    <text class="text">电台</text>
   </view>
   <view class="menu-item">
-    <view>
-      <i class="iconfont icon-weibiaoti--"></i>
+    <view class="icon-bg">
+      <i class="iconfont icon-diantai icon-site"></i>
     </view>
-    <text >每日推荐</text>
-  </view>
-  <view class="menu-item">
-    <view>
-      <i class="iconfont icon-weibiaoti--"></i>
-    </view>
-    <text >每日推荐</text>
+    <text class="text">私人FM</text>
   </view>
 </view>
 <view class="playlist-container">

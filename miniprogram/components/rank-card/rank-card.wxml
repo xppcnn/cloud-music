@@ -1,0 +1,21 @@
+<!-- components/rank-card/rank-card.wxml -->
+<view class="card-container">
+  <view class="rank-card">
+    <view class="img-container" bind:tap="goToMusicList">
+      <image src="{{rankdetail.coverImgUrl}}" class="rank-img"></image>
+      <text class="rank-updateFrequency">{{rankdetail.updateFrequency}}</text>
+    </view>
+    <view hidden="{{showFlag}}" class="music-container" bind:tap="goToMusicList">
+      <block wx:for="{{rankdetail.tracks}}">
+        <view class="music">
+          <text>{{index+1}}</text>
+          .
+          <text>{{item.first}}</text>
+          -
+          <text>{{item.second}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="rank-name" hidden="{{!showFlag}}">{{rankdetail.name}}</view>
+</view>

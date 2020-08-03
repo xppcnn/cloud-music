@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "my-rankCard": "../../components/rank-card/rank-card"
+  },
+  "navigationBarTitleText": "排行榜"
+}
